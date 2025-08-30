@@ -1212,3 +1212,74 @@ LogConfig: Set CVar [[r.VRS.ContrastAdaptiveShading:1]]
 [2025.08.30-16.19.08:325][119]LogEOSSDK: LogEOS: Updating Product SDK Config, Time: 966.306702
 [2025.08.30-16.19.09:326][121]LogEOSSDK: LogEOS: SDK Config Product Update Request Completed - No Change
 [2025.08.30-16.19.09:326][121]LogEOSSDK: LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 966.973572, Update Interval: 356.233398
+[2025.08.30-16.25.20:366][234]LogEOSSDK: LogEOS: Updating Product SDK Config, Time: 1338.348145
+[2025.08.30-16.25.21:366][237]LogEOSSDK: LogEOS: SDK Config Product Update Request Completed - No Change
+[2025.08.30-16.25.21:366][237]LogEOSSDK: LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 1339.015015, Update Interval: 306.846527
+[2025.08.30-16.27.44:673][748]LogStreaming: Display: FlushAsyncLoading(474): 1 QueuedPackages, 0 AsyncPackages
+[2025.08.30-16.27.48:411][748]LogSlate: Window 'New Level' being destroyed
+[2025.08.30-16.27.48:456][748]Cmd: MAP LOAD FILE="../../../Engine/Content/Maps/Templates/Template_Default.umap" TEMPLATE=1 SHOWPROGRESS=1 FEATURELEVEL=4
+[2025.08.30-16.27.48:713][748]LogWorld: UWorld::CleanupWorld for Untitled_1, bSessionEnded=true, bCleanupResources=true
+[2025.08.30-16.27.48:729][748]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2025.08.30-16.27.48:730][748]LogWorldPartition: UWorldPartition::Uninitialize : World = /Temp/Untitled_1.Untitled_1
+[2025.08.30-16.27.49:212][748]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2025.08.30-16.27.50:074][748]LogUObjectHash: Compacting FUObjectHashTables data took  21.43ms
+[2025.08.30-16.27.50:307][748]LogAudio: Display: Audio Device (ID: 1) registered with world 'Untitled_2'.
+[2025.08.30-16.27.50:311][748]LogChaosDD: Creating Chaos Debug Draw Scene for world Untitled_2
+[2025.08.30-16.27.50:757][748]LogEditorServer: Finished looking for orphan Actors (0.001 secs)
+[2025.08.30-16.27.50:806][748]LogUObjectHash: Compacting FUObjectHashTables data took   0.74ms
+[2025.08.30-16.27.50:809][748]Cmd: MAP CHECKDEP NOCLEARLOG
+[2025.08.30-16.27.50:813][748]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 0.909ms to complete.
+[2025.08.30-16.27.51:161][750]LogRenderer: Recreating Persistent SBTs due to initializer changes: 
+		NumShaderSlotsPerGeometrySegment changed: current: 1 - new: 2
+		NumGeometrySegments changed: current: 0 - new: 512
+[2025.08.30-16.27.52:157][750]LogSlate: External Image Picker: DecompressImage failed
+[2025.08.30-16.28.11:233][756]LogSlate: Window 'Save Level As' being destroyed
+[2025.08.30-16.28.11:384][756]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/Maps/Test_Map" FILE="../../../../../Diss_git/Reality_Shift_/Project_Green/Content/Maps/Test_Map.umap" SILENT=true AUTOSAVING=false KEEPDIRTY=false
+[2025.08.30-16.28.11:418][756]LogUObjectHash: Compacting FUObjectHashTables data took   0.57ms
+[2025.08.30-16.28.11:473][756]LogSavePackage: Moving output files for package: /Game/Maps/Test_Map
+[2025.08.30-16.28.11:473][756]LogSavePackage: Moving '../../../../../Diss_git/Reality_Shift_/Project_Green/Saved/Test_MapB8EAF786443B327C2A3F039EC95251DE.tmp' to '../../../../../Diss_git/Reality_Shift_/Project_Green/Content/Maps/Test_Map.umap'
+[2025.08.30-16.28.11:521][756]LogFileHelpers: Saving map 'Test_Map' took 0.278
+[2025.08.30-16.28.11:523][756]Cmd: MAP LOAD FILE="../../../../../Diss_git/Reality_Shift_/Project_Green/Content/Maps/Test_Map.umap" TEMPLATE=0 SHOWPROGRESS=1 FEATURELEVEL=4
+[2025.08.30-16.28.11:541][756]LogWorld: UWorld::CleanupWorld for Test_Map, bSessionEnded=true, bCleanupResources=true
+[2025.08.30-16.28.11:542][756]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2025.08.30-16.28.11:557][756]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2025.08.30-16.28.11:560][756]LogUObjectHash: Compacting FUObjectHashTables data took   0.52ms
+[2025.08.30-16.28.11:560][756]LogStreaming: Display: FlushAsyncLoading(477): 1 QueuedPackages, 0 AsyncPackages
+[2025.08.30-16.28.11:563][756]LogAudio: Display: Audio Device (ID: 1) registered with world 'Test_Map'.
+[2025.08.30-16.28.11:563][756]LogChaosDD: Creating Chaos Debug Draw Scene for world Test_Map
+[2025.08.30-16.28.11:609][756]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2025.08.30-16.28.11:625][756]LogUObjectHash: Compacting FUObjectHashTables data took   0.41ms
+[2025.08.30-16.28.11:634][756]Cmd: MAP CHECKDEP NOCLEARLOG
+[2025.08.30-16.28.11:634][756]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 0.048ms to complete.
+[2025.08.30-16.28.11:679][756]LogContentValidation: Display: Starting to validate 1 assets
+[2025.08.30-16.28.11:679][756]LogContentValidation: Enabled validators:
+[2025.08.30-16.28.11:681][756]LogContentValidation: 	/Script/DataValidation.EditorValidator_Material
+[2025.08.30-16.28.11:681][756]LogContentValidation: 	/Script/DataValidation.DirtyFilesChangelistValidator
+[2025.08.30-16.28.11:681][756]LogContentValidation: 	/Script/DataValidation.EditorValidator_Localization
+[2025.08.30-16.28.11:681][756]LogContentValidation: 	/Script/DataValidation.PackageFileValidator
+[2025.08.30-16.28.11:681][756]LogContentValidation: 	/Script/DataValidation.WorldPartitionChangelistValidator
+[2025.08.30-16.28.11:681][756]LogContentValidation: 	/Script/InputBlueprintNodes.EnhancedInputUserWidgetValidator
+[2025.08.30-16.28.11:685][756]AssetCheck: /Game/Maps/Test_Map Validating asset
+[2025.08.30-16.28.11:729][756]LogSlate: Took 0.006108 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (167K)
+[2025.08.30-16.28.11:773][756]LogSourceControl: Display: Uncontrolled Changelist persistency file saved ../../../../../Diss_git/Reality_Shift_/Project_Green/Saved/SourceControl/UncontrolledChangelists.json
+[2025.08.30-16.28.11:788][757]LogRenderer: Recreating Persistent SBTs due to initializer changes: 
+		NumShaderSlotsPerGeometrySegment changed: current: 1 - new: 2
+		NumGeometrySegments changed: current: 0 - new: 512
+[2025.08.30-16.28.12:060][758]LogSlate: External Image Picker: DecompressImage failed
+[2025.08.30-16.28.24:607][478]LogActorFactory: Actor Factory attempting to spawn StaticMesh /Engine/BasicShapes/Cube.Cube
+[2025.08.30-16.28.24:607][478]LogActorFactory: Actor Factory attempting to spawn StaticMesh /Engine/BasicShapes/Cube.Cube
+[2025.08.30-16.28.24:618][478]LogActorFactory: Actor Factory spawned StaticMesh /Engine/BasicShapes/Cube.Cube as actor: StaticMeshActor /Game/Maps/Test_Map.Test_Map:PersistentLevel.StaticMeshActor_1
+[2025.08.30-16.28.24:622][478]LogActorFactory: Actor Factory spawned StaticMesh /Engine/BasicShapes/Cube.Cube as actor: StaticMeshActor /Game/Maps/Test_Map.Test_Map:PersistentLevel.StaticMeshActor_1
+[2025.08.30-16.28.47:699][809]LogActorFactory: Actor Factory attempting to spawn StaticMesh /Engine/BasicShapes/Plane.Plane
+[2025.08.30-16.28.47:699][809]LogActorFactory: Actor Factory attempting to spawn StaticMesh /Engine/BasicShapes/Plane.Plane
+[2025.08.30-16.28.47:700][809]LogActorFactory: Actor Factory spawned StaticMesh /Engine/BasicShapes/Plane.Plane as actor: StaticMeshActor /Game/Maps/Test_Map.Test_Map:PersistentLevel.StaticMeshActor_2
+[2025.08.30-16.28.47:701][809]LogActorFactory: Actor Factory spawned StaticMesh /Engine/BasicShapes/Plane.Plane as actor: StaticMeshActor /Game/Maps/Test_Map.Test_Map:PersistentLevel.StaticMeshActor_2
+[2025.08.30-16.29.17:227][556]Cmd: DUPLICATE
+[2025.08.30-16.29.17:227][556]Cmd: ACTOR DUPLICATE
+[2025.08.30-16.29.22:115][843]Cmd: DUPLICATE
+[2025.08.30-16.29.22:115][843]Cmd: ACTOR DUPLICATE
+[2025.08.30-16.29.27:966][191]Cmd: DUPLICATE
+[2025.08.30-16.29.27:966][191]Cmd: ACTOR DUPLICATE
+[2025.08.30-16.30.45:203][774]LogEOSSDK: LogEOS: Updating Product SDK Config, Time: 1663.187988
+[2025.08.30-16.30.45:354][783]LogEOSSDK: LogEOS: SDK Config Product Update Request Completed - No Change
+[2025.08.30-16.30.45:354][783]LogEOSSDK: LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 1663.321533, Update Interval: 347.033905
