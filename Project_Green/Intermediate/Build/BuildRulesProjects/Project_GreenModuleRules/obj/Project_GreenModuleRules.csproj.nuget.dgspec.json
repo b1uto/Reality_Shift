@@ -688,7 +688,7 @@
             "Microsoft.Build": {
               "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "target": "Package",
-              "version": "[17.11.4, )"
+              "version": "[17.14.8, )"
             },
             "Microsoft.Build.Locator": {
               "target": "Package",
