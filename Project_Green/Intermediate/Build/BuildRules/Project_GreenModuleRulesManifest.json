@@ -1,0 +1,10 @@
+{
+	"SourceFiles": [
+		"D:\\Diss_git\\Reality_Shift_\\Project_Green\\Source\\Project_Green\\Project_Green.Build.cs",
+		"D:\\Diss_git\\Reality_Shift_\\Project_Green\\Plugins\\VisualStudioTools\\Source\\VisualStudioBlueprintDebuggerHelper\\VisualStudioBlueprintDebuggerHelper.Build.cs",
+		"D:\\Diss_git\\Reality_Shift_\\Project_Green\\Plugins\\VisualStudioTools\\Source\\VisualStudioTools\\VisualStudioTools.Build.cs",
+		"D:\\Diss_git\\Reality_Shift_\\Project_Green\\Source\\Project_Green.Target.cs",
+		"D:\\Diss_git\\Reality_Shift_\\Project_Green\\Source\\Project_GreenEditor.Target.cs"
+	],
+	"EngineVersion": "5.6.1"
+}

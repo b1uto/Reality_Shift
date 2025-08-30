@@ -1,0 +1,13 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-Project_Green.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:/Diss_git/Reality_Shift_/Project_Green/Intermediate/Build/Win64/x64/Project_GreenEditor/Development/UnrealEd/SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.h.obj"
+"D:/Diss_git/Reality_Shift_/Project_Green/Intermediate/Build/Win64/x64/UnrealEditor/Development/Project_Green/Project_Green.cpp.obj"
+"D:/Diss_git/Reality_Shift_/Project_Green/Intermediate/Build/Win64/x64/UnrealEditor/Development/Project_Green/PerModuleInline.gen.cpp.obj"
+"D:/Diss_git/Reality_Shift_/Project_Green/Intermediate/Build/Win64/x64/UnrealEditor/Development/Project_Green/Default.rc2.res"
+/OUT:"D:/Diss_git/Reality_Shift_/Project_Green/Intermediate/Build/Win64/x64/UnrealEditor/Development/Project_Green/UnrealEditor-Project_Green.lib"

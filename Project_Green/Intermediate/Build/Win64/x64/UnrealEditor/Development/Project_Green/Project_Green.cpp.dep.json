@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\diss_git\\reality_shift_\\project_green\\source\\project_green\\project_green.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\diss_git\\reality_shift_\\project_green\\intermediate\\build\\win64\\x64\\project_greeneditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\diss_git\\reality_shift_\\project_green\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\project_green\\definitions.project_green.h",
+            "d:\\diss_git\\reality_shift_\\project_green\\source\\project_green\\project_green.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
