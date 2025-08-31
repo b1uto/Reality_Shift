@@ -135,5 +135,17 @@
     <ClInclude Include="..\..\Source\Green_Sample\Green_Sample.h">
       <Filter>Source\Green_Sample</Filter>
     </ClInclude>
+    <Filter Include="Source\Green_Sample\Private">
+      <UniqueIdentifier>{AA5EEC71-D157-3810-8BC9-84BAED2DE6A2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Green_Sample\Private\src">
+      <UniqueIdentifier>{A82FBA22-AE10-3305-BC9F-3DC0116D877B}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\Green_Sample\Private\src\First_Character.cpp">
+      <Filter>Source\Green_Sample\Private\src</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Green_Sample\Private\src\First_Character.h">
+      <Filter>Source\Green_Sample\Private\src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

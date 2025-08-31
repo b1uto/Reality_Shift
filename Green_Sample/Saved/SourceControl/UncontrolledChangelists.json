@@ -1,0 +1,14 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"D:/Diss_git/Reality_Shift_/Green_Sample/Content/Map/Test_Map.umap",
+				"D:/Diss_git/Reality_Shift_/Green_Sample/Content/Asset/2D_Sprite/Character/Idle.uasset",
+				"D:/Diss_git/Reality_Shift_/Green_Sample/Content/Asset/2D_Sprite/Character/Walk.uasset"
+			]
+		}
+	]
+}
