@@ -1,0 +1,10 @@
+{
+	"SourceFiles": [
+		"D:\\Diss_git\\Reality_Shift_\\Green_Sample\\Source\\Green_Sample\\Green_Sample.Build.cs",
+		"D:\\Diss_git\\Reality_Shift_\\Green_Sample\\Plugins\\VisualStudioTools\\Source\\VisualStudioBlueprintDebuggerHelper\\VisualStudioBlueprintDebuggerHelper.Build.cs",
+		"D:\\Diss_git\\Reality_Shift_\\Green_Sample\\Plugins\\VisualStudioTools\\Source\\VisualStudioTools\\VisualStudioTools.Build.cs",
+		"D:\\Diss_git\\Reality_Shift_\\Green_Sample\\Source\\Green_Sample.Target.cs",
+		"D:\\Diss_git\\Reality_Shift_\\Green_Sample\\Source\\Green_SampleEditor.Target.cs"
+	],
+	"EngineVersion": "5.6.1"
+}
