@@ -32,6 +32,18 @@ protected:
 	float CoyoteTimer = 0.f;
 	float JumpBufferTimer = 0.f;
 	float SavedBrakingFriction = 2.f;
+	float DropThrough = .35f;
+
+	//MultiJump
+	float DropValue = 0.f;
+	float SoftCollisionTraceDistance = 1000.0f;
+	float ShortHop = .5f;
+
+	//Dash
+	float DashSpeed = 1000.f;
+	float DashDuration = 0.2f;
+	float DashFrictionAf = 2.f;
+
 
 	FTimerHandle DashTimerHandle;
 	 
@@ -53,6 +65,12 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* DropAction;
 
+	UPROPERTY(EditAnywhere, Category = "VALUE")
+	TEnumAsByte<ECollisionChannel> SoftCollisionObjectType;
+
+	UPROPERTY()
+	AActor* LastFloorActor = nullptr;
+
 public:
 	// Sets default values for this character's properties
 	AFirst_Character();
@@ -62,6 +80,10 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	void SetSoftCollision(bool bEnabled);
+
+	void RefreshLastFloorActor();
 
 
 /**Calling Action*/
@@ -73,8 +95,11 @@ protected:
 	/**Called for Jump Action*/
 	void Drop(const FInputActionValue& Value);
 
-	/**Called for Dash Action*/
-	void Dash(const FInputActionValue& Value);
+	/**Called for multiple Jumps*/
+	void MultiJump();
+
+	/**Called for Soft Collision*/
+	void CheckForSoftCollision();
 
 public:
 

@@ -9,7 +9,7 @@
 #include "EnhancedInputComponent.h"
 #include "Components/InputComponent.h"
 #include "InputAction.h"
-#include "InputmappingContext.h"
+#include "InputMappingContext.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "DrawDebugHelpers.h"
 #include "TimerManager.h"
@@ -47,6 +47,8 @@ AFirst_Character::AFirst_Character()
 	MoveComp->GravityScale = 1.f;
 	MoveComp->BrakingDecelerationWalking = 2000.f;
 	MoveComp->MaxWalkSpeed = 600.f;
+
+	GetCapsuleComponent()->InitCapsuleSize(32.f, 88.f);
 }
 
 void AFirst_Character::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -84,6 +86,23 @@ void AFirst_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 }
 
+void AFirst_Character::SetSoftCollision(bool bEnabled)
+{
+	GetCapsuleComponent()->SetCollisionResponseToChannel(SoftCollisionObjectType, bEnabled ? ECR_Ignore : ECR_Block);
+}
+
+void AFirst_Character::RefreshLastFloorActor()
+{
+	if (const FFindFloorResult& Floor = GetCharacterMovement()->CurrentFloor; Floor.bBlockingHit)
+	{
+		LastFloorActor = Floor.HitResult.GetActor();
+	}
+	else
+	{
+		LastFloorActor = nullptr;
+	}
+}
+
 void AFirst_Character::Move(const FInputActionValue& Value)
 {
 	const FVector2D MoveAxis = Value.Get<FVector2D>();
@@ -96,10 +115,38 @@ void AFirst_Character::Drop(const FInputActionValue& Value)
 	DoDrop(DropAxis);
 }
 
-void AFirst_Character::Dash(const FInputActionValue& Value)
+void AFirst_Character::MultiJump()
 {
-	const float DashAxis = Value.Get<float>();
-	DoDashStart();
+	if (DropValue > 0.f) {
+		CheckForSoftCollision();
+		return;
+	}
+
+	DropValue = 0.0f;
+
+	if (!GetCharacterMovement()->IsFalling())
+	{
+		Jump();
+		return;
+	}
+}
+
+void AFirst_Character::CheckForSoftCollision()
+{
+	DropValue = 0.0f;
+
+	FHitResult OutHit;
+
+	const FVector Start = GetActorLocation();
+	const FVector End = Start + (FVector::DownVector * SoftCollisionTraceDistance);
+
+	FCollisionObjectQueryParams ObjectParams;
+	ObjectParams.AddObjectTypesToQuery(SoftCollisionObjectType);
+
+	if (OutHit.GetActor())
+	{
+		SetSoftCollision(true);
+	}
 }
 
 void AFirst_Character::DoMove(float Forward)
@@ -108,25 +155,77 @@ void AFirst_Character::DoMove(float Forward)
 
 	AddMovementInput(FVector::ForwardVector, Forward);
 	
+	FRotator R = GetActorRotation();
+	R.Yaw = (Forward > 0.f) ? 0.f : 180.f;
+	SetActorRotation(R);
 }
 
 void AFirst_Character::DoDrop(float Value)
 {
+	DropValue = Value;
+
+	if (Value > 0.f && GetCharacterMovement()->IsMovingOnGround())
+	{
+		RefreshLastFloorActor();
+		if (LastFloorActor)
+		{
+			// Ignore floor and nudge down to break contact
+			GetCapsuleComponent()->IgnoreActorWhenMoving(LastFloorActor, true);
+			AddActorWorldOffset(FVector(0, 0, -2.f), true);
+
+			FTimerHandle TempHandle;
+			GetWorld()->GetTimerManager().SetTimer(TempHandle, [this]()
+				{
+					if (LastFloorActor)
+					{
+						GetCapsuleComponent()->IgnoreActorWhenMoving(LastFloorActor, false);
+						LastFloorActor = nullptr;
+					}
+				}, DropThrough, false);
+		}
+	}
 }
+
 
 void AFirst_Character::DoJumpStart()
 {
+	MultiJump();
 }
 
 void AFirst_Character::DoJumpStop()
 {
+	UCharacterMovementComponent* Move = GetCharacterMovement();
+	if (Move && Move->Velocity.Z > 0.f) {
+		FVector V = Move->Velocity;
+		V.Z *= FMath::Clamp(ShortHop, 0.f, 1.f);
+		Move->Velocity = V;
+	}
+
 }
 
 void AFirst_Character::DoDashStart()
 {
+	UCharacterMovementComponent* Move = GetCharacterMovement();
+	if (!Move) return;
+
+	// Face-based direction using actor yaw (0 = right, 180 = left)
+	const float Yaw = GetActorRotation().Yaw;
+	const float Dir = (FMath::Cos(FMath::DegreesToRadians(Yaw)) >= 0.f) ? +1.f : -1.f;
+
+	SavedBrakingFriction = Move->BrakingFrictionFactor;
+	Move->BrakingFrictionFactor = 0.f;
+
+	LaunchCharacter(FVector(DashSpeed * Dir, 0.f, 0.f), true, false);
+
+	GetWorld()->GetTimerManager().SetTimer(
+		DashTimerHandle, this, &AFirst_Character::DoDashStop, DashDuration, false);
 }
 
 void AFirst_Character::DoDashStop()
 {
+	if (UCharacterMovementComponent* Move = GetCharacterMovement()) {
+		Move->BrakingFrictionFactor = DashFrictionAf;
+	}
+	GetWorld()->GetTimerManager().ClearTimer(DashTimerHandle);
 }
 

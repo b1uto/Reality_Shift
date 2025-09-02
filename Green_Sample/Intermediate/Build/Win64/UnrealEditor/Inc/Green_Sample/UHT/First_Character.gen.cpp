@@ -12,9 +12,11 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeFirst_Character() {}
 
 // ********** Begin Cross Module References ********************************************************
+ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_ACharacter();
 ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
+ENGINE_API UEnum* Z_Construct_UEnum_Engine_ECollisionChannel();
 ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputAction_NoRegister();
 GREEN_SAMPLE_API UClass* Z_Construct_UClass_AFirst_Character();
 GREEN_SAMPLE_API UClass* Z_Construct_UClass_AFirst_Character_NoRegister();
@@ -316,6 +318,13 @@ struct Z_Construct_UClass_AFirst_Character_Statics
 		{ "Category", "Input" },
 		{ "ModuleRelativePath", "Private/src/First_Character.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SoftCollisionObjectType_MetaData[] = {
+		{ "Category", "VALUE" },
+		{ "ModuleRelativePath", "Private/src/First_Character.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_LastFloorActor_MetaData[] = {
+		{ "ModuleRelativePath", "Private/src/First_Character.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Camera;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SpringArm;
@@ -324,6 +333,8 @@ struct Z_Construct_UClass_AFirst_Character_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_DashAction;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_InteractAction;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_DropAction;
+	static const UECodeGen_Private::FBytePropertyParams NewProp_SoftCollisionObjectType;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_LastFloorActor;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
@@ -347,6 +358,8 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFirst_Charact
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFirst_Character_Statics::NewProp_DashAction = { "DashAction", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFirst_Character, DashAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DashAction_MetaData), NewProp_DashAction_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFirst_Character_Statics::NewProp_InteractAction = { "InteractAction", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFirst_Character, InteractAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InteractAction_MetaData), NewProp_InteractAction_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFirst_Character_Statics::NewProp_DropAction = { "DropAction", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFirst_Character, DropAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DropAction_MetaData), NewProp_DropAction_MetaData) };
+const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_AFirst_Character_Statics::NewProp_SoftCollisionObjectType = { "SoftCollisionObjectType", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFirst_Character, SoftCollisionObjectType), Z_Construct_UEnum_Engine_ECollisionChannel, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SoftCollisionObjectType_MetaData), NewProp_SoftCollisionObjectType_MetaData) }; // 756624936
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFirst_Character_Statics::NewProp_LastFloorActor = { "LastFloorActor", nullptr, (EPropertyFlags)0x0020080000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFirst_Character, LastFloorActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_LastFloorActor_MetaData), NewProp_LastFloorActor_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AFirst_Character_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFirst_Character_Statics::NewProp_Camera,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFirst_Character_Statics::NewProp_SpringArm,
@@ -355,6 +368,8 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AFirst_Ch
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFirst_Character_Statics::NewProp_DashAction,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFirst_Character_Statics::NewProp_InteractAction,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFirst_Character_Statics::NewProp_DropAction,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFirst_Character_Statics::NewProp_SoftCollisionObjectType,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFirst_Character_Statics::NewProp_LastFloorActor,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AFirst_Character_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_AFirst_Character_Statics::DependentSingletons[])() = {
@@ -393,10 +408,10 @@ AFirst_Character::~AFirst_Character() {}
 struct Z_CompiledInDeferFile_FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h__Script_Green_Sample_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AFirst_Character, AFirst_Character::StaticClass, TEXT("AFirst_Character"), &Z_Registration_Info_UClass_AFirst_Character, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFirst_Character), 165582332U) },
+		{ Z_Construct_UClass_AFirst_Character, AFirst_Character::StaticClass, TEXT("AFirst_Character"), &Z_Registration_Info_UClass_AFirst_Character, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFirst_Character), 1543098957U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h__Script_Green_Sample_2713135879(TEXT("/Script/Green_Sample"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h__Script_Green_Sample_3002210036(TEXT("/Script/Green_Sample"),
 	Z_CompiledInDeferFile_FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h__Script_Green_Sample_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h__Script_Green_Sample_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
