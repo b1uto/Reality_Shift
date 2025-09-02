@@ -9,6 +9,9 @@
 
 /**Classes to be included*/
 class UCameraComponent;
+class UPaperFlipbookComponent;
+class UPaperSpriteComponent;
+class UPaperFlipbook;
 class USpringArmComponent;
 class UInputAction;
 struct FInputActionValue;
@@ -27,7 +30,10 @@ class AFirst_Character : public ACharacter
 
 	/**State*/
 protected:
+	//Movement
 	bool bWasGrounded= false;
+	bool bIsDashing = false;
+	float LandPlayTime = 0.12f;
 
 	float CoyoteTimer = 0.f;
 	float JumpBufferTimer = 0.f;
@@ -46,7 +52,17 @@ protected:
 
 
 	FTimerHandle DashTimerHandle;
-	 
+
+/**To Initialize the Paper*/
+protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Sprite", meta = (AllowPrivateAccess = "true"))
+	UPaperFlipbookComponent* Sprite;
+
+	UPROPERTY(EditAnywhere, Category = "Sprite")
+	UPaperFlipbook* Fb_Idle;
+
+	UPROPERTY(EditAnywhere, Category = "Sprite")
+	UPaperFlipbook* Fb_Walk;
 
 /**Initialize Input*/
 protected:
@@ -65,15 +81,23 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* DropAction;
 
+protected:
+
 	UPROPERTY(EditAnywhere, Category = "VALUE")
 	TEnumAsByte<ECollisionChannel> SoftCollisionObjectType;
 
 	UPROPERTY()
 	AActor* LastFloorActor = nullptr;
 
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputMappingContext* DefaultMappingContext;
+
 public:
 	// Sets default values for this character's properties
 	AFirst_Character();
+
+	/**Called to begin the play*/
+	virtual void BeginPlay() override;
 
 	/**Called to end and cleanup*/
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;

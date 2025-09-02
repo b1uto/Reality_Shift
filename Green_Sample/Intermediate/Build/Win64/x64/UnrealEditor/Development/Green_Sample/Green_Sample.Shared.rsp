@@ -288,6 +288,10 @@
 /I "../Plugins/EnhancedInput/Intermediate/Build/Win64/UnrealEditor/Inc/EnhancedInput/UHT"
 /I "../Plugins/EnhancedInput/Source"
 /I "../Plugins/EnhancedInput/Source/EnhancedInput/Public"
+/I "../Plugins/2D/Paper2D/Intermediate/Build/Win64/UnrealEditor/Inc/Paper2D/UHT"
+/I "../Plugins/2D/Paper2D/Source"
+/I "../Plugins/2D/Paper2D/Source/Paper2D/Classes"
+/I "../Plugins/2D/Paper2D/Source/Paper2D/Public"
 /I "D:/Diss_git/Reality_Shift_/Green_Sample/Intermediate/Build/Win64/x64/Green_SampleEditor/Development/UnrealEd"
 /external:W0
 /external:I "ThirdParty/GuidelinesSupportLibrary/GSL-1144/include"

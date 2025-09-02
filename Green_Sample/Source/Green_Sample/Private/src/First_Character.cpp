@@ -6,6 +6,7 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 #include "Components/InputComponent.h"
 #include "InputAction.h"
@@ -34,9 +35,25 @@ AFirst_Character::AFirst_Character()
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(SpringArm);
 
+	//Keep Rotation Manual
+	bUseControllerRotationPitch = false;
+	bUseControllerRotationYaw = false;
+	bUseControllerRotationRoll = false;
 
+	//Hide Inherited Mesh
+	GetMesh()->SetHiddenInGame(true);
+	GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	GetMesh()->SetComponentTickEnabled(false);
+	GetMesh()->SetSkeletalMesh(nullptr);
+	GetMesh()->SetAnimInstanceClass(nullptr);
+
+
+	//Paper Flipbook Component
 	UCharacterMovementComponent* MoveComp = GetCharacterMovement();
 	MoveComp->bOrientRotationToMovement = false;
+	MoveComp->SetPlaneConstraintEnabled(true);
+	MoveComp->SetPlaneConstraintNormal(FVector(0.f, 1.f, 0.f));
+	MoveComp->bConstrainToPlane = true;
 	MoveComp->RotationRate = FRotator(0.f, 720.f, 0.f);
 
 	MoveComp->JumpZVelocity = 600.f;
@@ -46,6 +63,21 @@ AFirst_Character::AFirst_Character()
 	MoveComp->MaxWalkSpeed = 600.f;
 
 	GetCapsuleComponent()->InitCapsuleSize(32.f, 88.f);
+}
+
+void AFirst_Character::BeginPlay()
+{
+	Super::BeginPlay();
+	if(APlayerController* LocalPlayer_Controller = Cast<APlayerController>(GetController()))
+	{
+		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(LocalPlayer_Controller->GetLocalPlayer()))
+		{
+			if (DefaultMappingContext)
+			{
+				Subsystem->AddMappingContext(DefaultMappingContext, 0);
+			}
+		}
+	}
 }
 
 void AFirst_Character::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -64,6 +96,7 @@ void AFirst_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 		if (MoveAction)
 		{
 			EnhancedInput->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AFirst_Character::Move);
+			EnhancedInput->BindAction(MoveAction, ETriggerEvent::Completed, this, &AFirst_Character::Move);
 		}
 		if (JumpAction)
 		{
@@ -114,13 +147,6 @@ void AFirst_Character::Drop(const FInputActionValue& Value)
 
 void AFirst_Character::MultiJump()
 {
-	if (DropValue > 0.f) {
-		CheckForSoftCollision();
-		return;
-	}
-
-	DropValue = 0.0f;
-
 	if (!GetCharacterMovement()->IsFalling())
 	{
 		Jump();
