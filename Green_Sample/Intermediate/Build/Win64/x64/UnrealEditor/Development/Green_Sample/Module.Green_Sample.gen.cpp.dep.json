@@ -1,0 +1,28 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\diss_git\\reality_shift_\\green_sample\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\green_sample\\module.green_sample.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\diss_git\\reality_shift_\\green_sample\\intermediate\\build\\win64\\x64\\green_sampleeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\diss_git\\reality_shift_\\green_sample\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\green_sample\\definitions.green_sample.h",
+            "d:\\diss_git\\reality_shift_\\green_sample\\intermediate\\build\\win64\\unrealeditor\\inc\\green_sample\\uht\\first_character.gen.cpp",
+            "d:\\diss_git\\reality_shift_\\green_sample\\source\\green_sample\\private\\src\\first_character.h",
+            "d:\\games\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\gameframework\\character.h",
+            "d:\\games\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\gameframework\\charactermovementreplication.h",
+            "d:\\games\\ue_5.6\\engine\\source\\runtime\\net\\core\\public\\net\\core\\nettoken\\nettokenexportcontext.h",
+            "d:\\games\\ue_5.6\\engine\\source\\runtime\\experimental\\iris\\core\\public\\iris\\serialization\\irisobjectreferencepackagemap.h",
+            "d:\\games\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\iriscore\\uht\\irisobjectreferencepackagemap.generated.h",
+            "d:\\games\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\charactermovementreplication.generated.h",
+            "d:\\games\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\gameframework\\rootmotionsource.h",
+            "d:\\games\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\rootmotionsource.generated.h",
+            "d:\\games\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\character.generated.h",
+            "d:\\games\\ue_5.6\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\inputactionvalue.h",
+            "d:\\games\\ue_5.6\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\inputactionvalue.generated.h",
+            "d:\\diss_git\\reality_shift_\\green_sample\\intermediate\\build\\win64\\unrealeditor\\inc\\green_sample\\uht\\first_character.generated.h",
+            "d:\\diss_git\\reality_shift_\\green_sample\\intermediate\\build\\win64\\unrealeditor\\inc\\green_sample\\uht\\green_sample.init.gen.cpp"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
