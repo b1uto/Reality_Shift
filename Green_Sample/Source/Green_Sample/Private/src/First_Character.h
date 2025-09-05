@@ -56,7 +56,7 @@ protected:
 /**To Initialize the Paper*/
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Sprite", meta = (AllowPrivateAccess = "true"))
-	UPaperFlipbookComponent* Sprite;
+	UPaperFlipbookComponent* Sprites;
 
 	UPROPERTY(EditAnywhere, Category = "Sprite")
 	UPaperFlipbook* Fb_Idle;
@@ -67,7 +67,13 @@ protected:
 /**Initialize Input*/
 protected:
 	UPROPERTY(EditAnywhere, Category="Input")
-	UInputAction* MoveAction;
+	UInputAction* MoveForwardAction;
+
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputAction* MoveRightAction;
+
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputAction* LookAction;
 
 	UPROPERTY(EditAnywhere, Category="Input")
 	UInputAction* JumpAction;
@@ -81,6 +87,7 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* DropAction;
 
+/**Other Misc*/
 protected:
 
 	UPROPERTY(EditAnywhere, Category = "VALUE")
@@ -91,6 +98,7 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputMappingContext* DefaultMappingContext;
+
 
 public:
 	// Sets default values for this character's properties
@@ -114,7 +122,13 @@ public:
 protected:
 
 	/**Called for movement input*/
-	void Move(const FInputActionValue& Value);
+	void MoveForward(const FInputActionValue& Value);
+
+	/**Called for Move Right Action*/
+	void MoveRight(const FInputActionValue& Value);
+
+	/** Called for Look Action*/
+	void Look(const FInputActionValue& Value);
 	
 	/**Called for Jump Action*/
 	void Drop(const FInputActionValue& Value);

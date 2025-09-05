@@ -148,4 +148,14 @@
       <Filter>Source\Green_Sample\Private\src</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source\Test">
+      <UniqueIdentifier>{04a92c8d-0c5c-449e-b8cf-6b8b3936a573}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="First_Character_Test.cpp">
+      <Filter>Source\Test</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>

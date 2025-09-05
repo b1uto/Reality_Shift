@@ -22,22 +22,24 @@ AFirst_Character::AFirst_Character()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	//Componennts
+	//Spring Arm Componennts
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArm->SetupAttachment(GetRootComponent());
-	SpringArm->TargetArmLength = 900.f;
-	SpringArm->SetRelativeRotation(FRotator(0.f, -90.f, 0.f));
-	SpringArm->bEnableCameraLag = true;
-	SpringArm->CameraLagSpeed = 15.f;
+	SpringArm->TargetArmLength = 0.f;
+	SpringArm->bUsePawnControlRotation = true;
+	SpringArm->bEnableCameraLag = false;
 	SpringArm->bDoCollisionTest = false;
 
 	//Camera Component
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
-	Camera->SetupAttachment(SpringArm);
+	Camera->SetupAttachment(GetCapsuleComponent());
+	Camera->bUsePawnControlRotation = true;
+	Camera->SetRelativeLocation(FVector(0.f, 0.f, 64.f));
+	Camera->SetFieldOfView(90.f);
 
 	//Keep Rotation Manual
-	bUseControllerRotationPitch = false;
-	bUseControllerRotationYaw = false;
+	bUseControllerRotationPitch = true;
+	bUseControllerRotationYaw = true;
 	bUseControllerRotationRoll = false;
 
 	//Hide Inherited Mesh
@@ -50,10 +52,9 @@ AFirst_Character::AFirst_Character()
 
 	//Paper Flipbook Component
 	UCharacterMovementComponent* MoveComp = GetCharacterMovement();
-	MoveComp->bOrientRotationToMovement = false;
-	MoveComp->SetPlaneConstraintEnabled(true);
-	MoveComp->SetPlaneConstraintNormal(FVector(0.f, 1.f, 0.f));
-	MoveComp->bConstrainToPlane = true;
+	MoveComp->bOrientRotationToMovement = true;
+	MoveComp->bConstrainToPlane = false;
+	MoveComp->SetPlaneConstraintEnabled(false);
 	MoveComp->RotationRate = FRotator(0.f, 720.f, 0.f);
 
 	MoveComp->JumpZVelocity = 600.f;
@@ -62,7 +63,6 @@ AFirst_Character::AFirst_Character()
 	MoveComp->BrakingDecelerationWalking = 2000.f;
 	MoveComp->MaxWalkSpeed = 600.f;
 
-	GetCapsuleComponent()->InitCapsuleSize(32.f, 88.f);
 }
 
 void AFirst_Character::BeginPlay()
@@ -93,10 +93,20 @@ void AFirst_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 	if (UEnhancedInputComponent* EnhancedInput = CastChecked<UEnhancedInputComponent>(PlayerInputComponent))
 	{
-		if (MoveAction)
+		if (MoveForwardAction)
 		{
-			EnhancedInput->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AFirst_Character::Move);
-			EnhancedInput->BindAction(MoveAction, ETriggerEvent::Completed, this, &AFirst_Character::Move);
+			EnhancedInput->BindAction(MoveForwardAction, ETriggerEvent::Triggered, this, &AFirst_Character::MoveForward);
+			EnhancedInput->BindAction(MoveForwardAction, ETriggerEvent::Completed, this, &AFirst_Character::MoveForward);
+		}
+		if (MoveRightAction) 
+		{
+			EnhancedInput->BindAction(MoveRightAction, ETriggerEvent::Triggered, this, &AFirst_Character::MoveRight);
+			EnhancedInput->BindAction(MoveRightAction, ETriggerEvent::Completed, this, &AFirst_Character::MoveRight);
+		}
+		if (LookAction)
+		{
+			EnhancedInput->BindAction(LookAction, ETriggerEvent::Triggered, this, &AFirst_Character::Look);
+			EnhancedInput->BindAction(LookAction, ETriggerEvent::Completed, this, &AFirst_Character::Look);
 		}
 		if (JumpAction)
 		{
@@ -133,10 +143,29 @@ void AFirst_Character::RefreshLastFloorActor()
 	}
 }
 
-void AFirst_Character::Move(const FInputActionValue& Value)
+void AFirst_Character::MoveForward(const FInputActionValue& Value)
 {
-	const FVector2D MoveAxis = Value.Get<FVector2D>();
-	DoMove(MoveAxis.Y);
+	const float MoveAxis = Value.Get<float>();
+	if (FMath::Abs(MoveAxis) > KINDA_SMALL_NUMBER) {
+		AddMovementInput(GetActorForwardVector(), MoveAxis);
+	}
+}
+
+void AFirst_Character::MoveRight(const FInputActionValue& Value)
+{
+	const float MoveAxis = Value.Get<float>();
+	if (FMath::Abs(MoveAxis) > KINDA_SMALL_NUMBER) {
+		AddMovementInput(GetActorRightVector(), MoveAxis);
+	}
+}
+
+void AFirst_Character::Look(const FInputActionValue& Value)
+{
+	const FVector2D LookAxis = Value.Get<FVector2D>();
+	if (APlayerController* PC = Cast<APlayerController>(GetController())) {
+		PC->AddPitchInput(LookAxis.Y);
+		PC->AddYawInput(LookAxis.X);
+	}
 }
 
 void AFirst_Character::Drop(const FInputActionValue& Value)
@@ -172,15 +201,9 @@ void AFirst_Character::CheckForSoftCollision()
 	}
 }
 
-void AFirst_Character::DoMove(float Forward)
+void AFirst_Character::DoMove(float Value)
 {
-	if (FMath::IsNearlyZero(Forward, KINDA_SMALL_NUMBER)) return;
-
-	AddMovementInput(FVector::ForwardVector, Forward);
 	
-	FRotator R = GetActorRotation();
-	R.Yaw = (Forward > 0.f) ? 0.f : 180.f;
-	SetActorRotation(R);
 }
 
 void AFirst_Character::DoDrop(float Value)
