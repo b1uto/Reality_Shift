@@ -25,6 +25,14 @@ void UPixelSnapMovement::BeginPlay()
 	
 }
 
+// Safe velocity getter
+static FVector GetActorVelocitySafe(const AActor* Actor)
+{
+	if (!Actor) return FVector::ZeroVector;
+	return Actor->GetVelocity();
+}
+
+// Called every frame
 void UPixelSnapMovement::TickComponent(float DeltaTime, ELevelTick Ticktype, FActorComponentTickFunction* TickFunction)
 {
 	Super::TickComponent(DeltaTime, Ticktype, TickFunction);
@@ -91,17 +99,55 @@ void UPixelSnapMovement::TickComponent(float DeltaTime, ELevelTick Ticktype, FAc
 	
 }
 
-
-static FVector GetActorVelocitySafe(const AActor* Actor)
-{
-	if (!Actor) return FVector::ZeroVector;
-	return Actor->GetVelocity();
-}
-
-
+// Try to get camera information
 bool UPixelSnapMovement::ResolveCamera(FVector& OutCamLoc, FRotator& OutCamRot, float& OutFOVYRad, int32& OutViewPort, int32& OutViewPortH) const
 {
-	return false;
+
+	OutCamLoc = FVector::ZeroVector;
+	OutCamRot = FRotator::ZeroRotator;
+	OutFOVYRad = 0.0f;
+	OutViewPort = 0;
+	OutViewPortH = 0;
+
+	if (CameraOverride) {
+		OutCamLoc = CameraOverride->GetComponentLocation();
+		OutCamRot = CameraOverride->GetComponentRotation();
+		OutFOVYRad = FMath::DegreesToRadians(CameraOverride->FieldOfView);
+	}
+	if(OutFOVYRad <= 0.0f)
+	{
+		if(UWorld* World = GetWorld())
+		{
+			if(APlayerController* PC = UGameplayStatics::GetPlayerController(World, 0))
+			{
+				if (APlayerCameraManager* CamMgr = PC->PlayerCameraManager)
+				{
+					OutCamLoc = CamMgr->GetCameraLocation();
+					OutCamRot = CamMgr->GetCameraRotation();
+					OutFOVYRad = FMath::DegreesToRadians(CamMgr->GetFOVAngle());
+				}
+
+				int32 SizeX = 0;
+				int32 SizeY = 0;
+				PC->GetViewportSize(SizeX, SizeY);
+				OutViewPort = SizeX;
+				OutViewPortH = SizeY;
+			}
+		}
+	}
+
+	if(OutViewPort <= 0 || OutViewPortH <= 0)
+	{
+		if (GEngine && GEngine->GameViewport)
+		{
+			FVector2D ViewSize(0,0);
+			GEngine->GameViewport->GetViewportSize(ViewSize);
+			OutViewPort = static_cast<int32>(ViewSize.X);
+			OutViewPortH = static_cast<int32>(ViewSize.Y);
+		}
+	}
+
+	return (OutFOVYRad > 0.0f && OutViewPort > 0 && OutViewPortH > 0);
 }
 
 FVector UPixelSnapMovement::ReConstructWorldPosition(const FVector& CamLoc, const FRotationMatrix& CamBasis, const FVector& OwnerWorldPos, float Depth, float StepWorld)
@@ -111,5 +157,5 @@ FVector UPixelSnapMovement::ReConstructWorldPosition(const FVector& CamLoc, cons
 
 float UPixelSnapMovement::WorldToScreenPixel(const float FOVYRad, const int32 ViewPortH, const float Depth)
 {
-	return 0.0f;
+	return (2.f * Depth * FMath::Tan(FOVYRad * 0.5f))/FMath::Max(1.f, ViewPortH);
 }

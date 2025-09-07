@@ -19,7 +19,13 @@
             "d:\\games\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\character.generated.h",
             "d:\\games\\ue_5.6\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\inputactionvalue.h",
             "d:\\games\\ue_5.6\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\inputactionvalue.generated.h",
-            "d:\\diss_git\\reality_shift_\\green_sample\\intermediate\\build\\win64\\unrealeditor\\inc\\green_sample\\uht\\first_character.generated.h"
+            "d:\\diss_git\\reality_shift_\\green_sample\\intermediate\\build\\win64\\unrealeditor\\inc\\green_sample\\uht\\first_character.generated.h",
+            "d:\\diss_git\\reality_shift_\\green_sample\\intermediate\\build\\win64\\unrealeditor\\inc\\green_sample\\uht\\green_sample.init.gen.cpp",
+            "d:\\diss_git\\reality_shift_\\green_sample\\intermediate\\build\\win64\\unrealeditor\\inc\\green_sample\\uht\\pixelsnapmovement.gen.cpp",
+            "d:\\diss_git\\reality_shift_\\green_sample\\source\\green_sample\\public\\pixelsnapmovement.h",
+            "d:\\games\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\camera\\cameracomponent.h",
+            "d:\\games\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\cameracomponent.generated.h",
+            "d:\\diss_git\\reality_shift_\\green_sample\\intermediate\\build\\win64\\unrealeditor\\inc\\green_sample\\uht\\pixelsnapmovement.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

@@ -25,7 +25,7 @@ AFirst_Character::AFirst_Character()
 	//Spring Arm Componennts
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArm->SetupAttachment(GetRootComponent());
-	SpringArm->TargetArmLength = 0.f;
+	SpringArm->TargetArmLength = 400.f;
 	SpringArm->bUsePawnControlRotation = true;
 	SpringArm->bEnableCameraLag = false;
 	SpringArm->bDoCollisionTest = false;
