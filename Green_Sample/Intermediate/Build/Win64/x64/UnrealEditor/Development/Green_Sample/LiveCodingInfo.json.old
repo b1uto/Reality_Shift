@@ -3,6 +3,7 @@
 	{
 		"Module.Green_Sample.gen.cpp.obj": [
 			"First_Character.gen.cpp.obj",
+			"PixelSnapMovement.gen.cpp.obj",
 			"Green_Sample.init.gen.cpp.obj"
 		]
 	}

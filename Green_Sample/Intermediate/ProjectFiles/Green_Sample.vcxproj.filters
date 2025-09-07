@@ -12,6 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <None Include="..\..\.vsconfig" />
+    <None Include="..\..\Green_Sample.png" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
     </Filter>
@@ -138,6 +139,9 @@
     <Filter Include="Source\Green_Sample\Private">
       <UniqueIdentifier>{AA5EEC71-D157-3810-8BC9-84BAED2DE6A2}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\Green_Sample\Private\PixelSnapMovement.cpp">
+      <Filter>Source\Green_Sample\Private</Filter>
+    </ClCompile>
     <Filter Include="Source\Green_Sample\Private\src">
       <UniqueIdentifier>{A82FBA22-AE10-3305-BC9F-3DC0116D877B}</UniqueIdentifier>
     </Filter>
@@ -147,15 +151,11 @@
     <ClInclude Include="..\..\Source\Green_Sample\Private\src\First_Character.h">
       <Filter>Source\Green_Sample\Private\src</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Source\Test">
-      <UniqueIdentifier>{04a92c8d-0c5c-449e-b8cf-6b8b3936a573}</UniqueIdentifier>
+    <Filter Include="Source\Green_Sample\Public">
+      <UniqueIdentifier>{832C6B7F-4A67-3791-A2D2-1F23CED05A8D}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="First_Character_Test.cpp">
-      <Filter>Source\Test</Filter>
-    </ClCompile>
+    <ClInclude Include="..\..\Source\Green_Sample\Public\PixelSnapMovement.h">
+      <Filter>Source\Green_Sample\Public</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

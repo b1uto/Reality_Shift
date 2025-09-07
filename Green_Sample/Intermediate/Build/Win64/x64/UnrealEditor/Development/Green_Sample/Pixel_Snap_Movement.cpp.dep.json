@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\diss_git\\reality_shift_\\green_sample\\source\\green_sample\\private\\pixel_snap_movement.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\diss_git\\reality_shift_\\green_sample\\intermediate\\build\\win64\\x64\\green_sampleeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\diss_git\\reality_shift_\\green_sample\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\green_sample\\definitions.green_sample.h",
+            "d:\\diss_git\\reality_shift_\\green_sample\\source\\green_sample\\private\\pixel_snap_movement.h",
+            "d:\\diss_git\\reality_shift_\\green_sample\\intermediate\\build\\win64\\unrealeditor\\inc\\green_sample\\uht\\pixel_snap_movement.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

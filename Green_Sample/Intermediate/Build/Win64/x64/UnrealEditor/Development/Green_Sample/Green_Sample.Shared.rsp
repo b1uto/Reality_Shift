@@ -285,6 +285,7 @@
 /I "Editor/AnimationEditMode/Public"
 /I "D:/Diss_git/Reality_Shift_/Green_Sample/Intermediate/Build/Win64/UnrealEditor/Inc/Green_Sample/UHT"
 /I "D:/Diss_git/Reality_Shift_/Green_Sample/Source"
+/I "D:/Diss_git/Reality_Shift_/Green_Sample/Source/Green_Sample/Public"
 /I "../Plugins/EnhancedInput/Intermediate/Build/Win64/UnrealEditor/Inc/EnhancedInput/UHT"
 /I "../Plugins/EnhancedInput/Source"
 /I "../Plugins/EnhancedInput/Source/EnhancedInput/Public"
