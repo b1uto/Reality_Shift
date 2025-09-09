@@ -78,6 +78,12 @@ DerivedDataCache/*
 *.log
 *.tlog
 
+# Unreal Engine auto-generated
+Saved/*
+DerivedDataCache/*
+Intermediate/*
+Binaries/*
+
 #Crash Reports
 Saved/Crashes/*
 Saved/Reports/*
