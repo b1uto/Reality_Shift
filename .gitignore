@@ -106,3 +106,5 @@ Saved/SharedDebugInfo/*
 #Temp Files
 Thumbs.db
 Desktop.ini
+"Saved/"
+"**/Saved/"
