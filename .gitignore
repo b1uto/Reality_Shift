@@ -73,3 +73,30 @@ Plugins/**/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+#Logs
+*.log
+*.tlog
+
+#Crash Reports
+Saved/Crashes/*
+Saved/Reports/*
+
+#AutoSaves and backups
+Saved/Autosaves/*
+Saved/Backups/*
+
+#Asset Registry & Collection
+*.asset
+*.collection
+
+#Shader debug files
+Saved/SharedDebugInfo/*
+
+#User-speific config
+*.user
+*.userprefs
+
+#Temp Files
+Thumbs.db
+Desktop.ini
