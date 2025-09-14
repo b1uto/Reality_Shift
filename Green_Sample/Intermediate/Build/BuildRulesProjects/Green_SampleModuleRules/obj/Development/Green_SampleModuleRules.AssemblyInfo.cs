@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Green_SampleModuleRules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Development")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f18a27213b8bcea5de0925b0d733123ae222bf7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+da170849255c3559ab9714ed108fcaa023ea05f2")]
 [assembly: System.Reflection.AssemblyProductAttribute("Green_SampleModuleRules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Green_SampleModuleRules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
