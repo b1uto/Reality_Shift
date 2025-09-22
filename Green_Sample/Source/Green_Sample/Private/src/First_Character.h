@@ -9,9 +9,6 @@
 
 /**Classes to be included*/
 class UCameraComponent;
-class UPaperFlipbookComponent;
-class UPaperSpriteComponent;
-class UPaperFlipbook;
 class USpringArmComponent;
 class UInputAction;
 struct FInputActionValue;
@@ -53,16 +50,6 @@ protected:
 
 	FTimerHandle DashTimerHandle;
 
-/**To Initialize the Paper*/
-protected:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Sprite", meta = (AllowPrivateAccess = "true"))
-	UPaperFlipbookComponent* Sprites;
-
-	UPROPERTY(EditAnywhere, Category = "Sprite")
-	UPaperFlipbook* Fb_Idle;
-
-	UPROPERTY(EditAnywhere, Category = "Sprite")
-	UPaperFlipbook* Fb_Walk;
 
 /**Initialize Input*/
 protected:
@@ -107,6 +94,9 @@ public:
 	/**Called to begin the play*/
 	virtual void BeginPlay() override;
 
+	/**Called to begin Tick*/
+	virtual void Tick(float DeltaTime) override;
+
 	/**Called to end and cleanup*/
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
@@ -140,10 +130,6 @@ protected:
 	void CheckForSoftCollision();
 
 public:
-
-	//called move input
-	UFUNCTION(BlueprintCallable, Category = "Input")
-	virtual void DoMove(float Forward);
 
 	UFUNCTION(BlueprintCallable, Category = "Input")
 	virtual void DoDrop(float Value);

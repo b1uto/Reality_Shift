@@ -17,18 +17,17 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class AFirst_Character *********************************************************
-#define FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h_23_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execDoDashStop); \
 	DECLARE_FUNCTION(execDoDashStart); \
 	DECLARE_FUNCTION(execDoJumpStop); \
 	DECLARE_FUNCTION(execDoJumpStart); \
-	DECLARE_FUNCTION(execDoDrop); \
-	DECLARE_FUNCTION(execDoMove);
+	DECLARE_FUNCTION(execDoDrop);
 
 
 GREEN_SAMPLE_API UClass* Z_Construct_UClass_AFirst_Character_NoRegister();
 
-#define FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h_23_INCLASS_NO_PURE_DECLS \
+#define FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h_20_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAFirst_Character(); \
 	friend struct Z_Construct_UClass_AFirst_Character_Statics; \
@@ -39,7 +38,7 @@ public: \
 	DECLARE_SERIALIZER(AFirst_Character)
 
 
-#define FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h_23_ENHANCED_CONSTRUCTORS \
+#define FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h_20_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	AFirst_Character(AFirst_Character&&) = delete; \
 	AFirst_Character(const AFirst_Character&) = delete; \
@@ -49,13 +48,13 @@ public: \
 	NO_API virtual ~AFirst_Character();
 
 
-#define FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h_20_PROLOG
-#define FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h_23_GENERATED_BODY \
+#define FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h_17_PROLOG
+#define FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h_20_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h_23_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h_23_INCLASS_NO_PURE_DECLS \
-	FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h_23_ENHANCED_CONSTRUCTORS \
+	FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h_20_INCLASS_NO_PURE_DECLS \
+	FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h_20_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

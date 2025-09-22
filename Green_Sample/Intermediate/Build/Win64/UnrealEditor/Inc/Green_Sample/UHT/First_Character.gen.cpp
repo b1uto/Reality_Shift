@@ -21,8 +21,6 @@ ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputAction_NoRegister();
 ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputMappingContext_NoRegister();
 GREEN_SAMPLE_API UClass* Z_Construct_UClass_AFirst_Character();
 GREEN_SAMPLE_API UClass* Z_Construct_UClass_AFirst_Character_NoRegister();
-PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbook_NoRegister();
-PAPER2D_API UClass* Z_Construct_UClass_UPaperFlipbookComponent_NoRegister();
 UPackage* Z_Construct_UPackage__Script_Green_Sample();
 // ********** End Cross Module References **********************************************************
 
@@ -189,55 +187,6 @@ DEFINE_FUNCTION(AFirst_Character::execDoJumpStop)
 }
 // ********** End Class AFirst_Character Function DoJumpStop ***************************************
 
-// ********** Begin Class AFirst_Character Function DoMove *****************************************
-struct Z_Construct_UFunction_AFirst_Character_DoMove_Statics
-{
-	struct First_Character_eventDoMove_Parms
-	{
-		float Forward;
-	};
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Input" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "//called move input\n" },
-#endif
-		{ "ModuleRelativePath", "Private/src/First_Character.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "called move input" },
-#endif
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_Forward;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AFirst_Character_DoMove_Statics::NewProp_Forward = { "Forward", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(First_Character_eventDoMove_Parms, Forward), METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AFirst_Character_DoMove_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AFirst_Character_DoMove_Statics::NewProp_Forward,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_AFirst_Character_DoMove_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AFirst_Character_DoMove_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_AFirst_Character, nullptr, "DoMove", Z_Construct_UFunction_AFirst_Character_DoMove_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AFirst_Character_DoMove_Statics::PropPointers), sizeof(Z_Construct_UFunction_AFirst_Character_DoMove_Statics::First_Character_eventDoMove_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020400, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AFirst_Character_DoMove_Statics::Function_MetaDataParams), Z_Construct_UFunction_AFirst_Character_DoMove_Statics::Function_MetaDataParams)},  };
-static_assert(sizeof(Z_Construct_UFunction_AFirst_Character_DoMove_Statics::First_Character_eventDoMove_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_AFirst_Character_DoMove()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AFirst_Character_DoMove_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(AFirst_Character::execDoMove)
-{
-	P_GET_PROPERTY(FFloatProperty,Z_Param_Forward);
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	P_THIS->DoMove(Z_Param_Forward);
-	P_NATIVE_END;
-}
-// ********** End Class AFirst_Character Function DoMove *******************************************
-
 // ********** Begin Class AFirst_Character *********************************************************
 void AFirst_Character::StaticRegisterNativesAFirst_Character()
 {
@@ -248,7 +197,6 @@ void AFirst_Character::StaticRegisterNativesAFirst_Character()
 		{ "DoDrop", &AFirst_Character::execDoDrop },
 		{ "DoJumpStart", &AFirst_Character::execDoJumpStart },
 		{ "DoJumpStop", &AFirst_Character::execDoJumpStop },
-		{ "DoMove", &AFirst_Character::execDoMove },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
@@ -301,20 +249,6 @@ struct Z_Construct_UClass_AFirst_Character_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Private/src/First_Character.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Sprites_MetaData[] = {
-		{ "AllowPrivateAccess", "true" },
-		{ "Category", "Sprite" },
-		{ "EditInline", "true" },
-		{ "ModuleRelativePath", "Private/src/First_Character.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Fb_Idle_MetaData[] = {
-		{ "Category", "Sprite" },
-		{ "ModuleRelativePath", "Private/src/First_Character.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Fb_Walk_MetaData[] = {
-		{ "Category", "Sprite" },
-		{ "ModuleRelativePath", "Private/src/First_Character.h" },
-	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MoveForwardAction_MetaData[] = {
 		{ "Category", "Input" },
 		{ "ModuleRelativePath", "Private/src/First_Character.h" },
@@ -357,9 +291,6 @@ struct Z_Construct_UClass_AFirst_Character_Statics
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Camera;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SpringArm;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_Sprites;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_Fb_Idle;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_Fb_Walk;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MoveForwardAction;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MoveRightAction;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_LookAction;
@@ -378,7 +309,6 @@ struct Z_Construct_UClass_AFirst_Character_Statics
 		{ &Z_Construct_UFunction_AFirst_Character_DoDrop, "DoDrop" }, // 2713744068
 		{ &Z_Construct_UFunction_AFirst_Character_DoJumpStart, "DoJumpStart" }, // 435571411
 		{ &Z_Construct_UFunction_AFirst_Character_DoJumpStop, "DoJumpStop" }, // 653974022
-		{ &Z_Construct_UFunction_AFirst_Character_DoMove, "DoMove" }, // 604446507
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -388,9 +318,6 @@ struct Z_Construct_UClass_AFirst_Character_Statics
 };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFirst_Character_Statics::NewProp_Camera = { "Camera", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFirst_Character, Camera), Z_Construct_UClass_UCameraComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Camera_MetaData), NewProp_Camera_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFirst_Character_Statics::NewProp_SpringArm = { "SpringArm", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFirst_Character, SpringArm), Z_Construct_UClass_USpringArmComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SpringArm_MetaData), NewProp_SpringArm_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFirst_Character_Statics::NewProp_Sprites = { "Sprites", nullptr, (EPropertyFlags)0x00200800000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFirst_Character, Sprites), Z_Construct_UClass_UPaperFlipbookComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Sprites_MetaData), NewProp_Sprites_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFirst_Character_Statics::NewProp_Fb_Idle = { "Fb_Idle", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFirst_Character, Fb_Idle), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Fb_Idle_MetaData), NewProp_Fb_Idle_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFirst_Character_Statics::NewProp_Fb_Walk = { "Fb_Walk", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFirst_Character, Fb_Walk), Z_Construct_UClass_UPaperFlipbook_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Fb_Walk_MetaData), NewProp_Fb_Walk_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFirst_Character_Statics::NewProp_MoveForwardAction = { "MoveForwardAction", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFirst_Character, MoveForwardAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MoveForwardAction_MetaData), NewProp_MoveForwardAction_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFirst_Character_Statics::NewProp_MoveRightAction = { "MoveRightAction", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFirst_Character, MoveRightAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MoveRightAction_MetaData), NewProp_MoveRightAction_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFirst_Character_Statics::NewProp_LookAction = { "LookAction", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AFirst_Character, LookAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_LookAction_MetaData), NewProp_LookAction_MetaData) };
@@ -404,9 +331,6 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFirst_Charact
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AFirst_Character_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFirst_Character_Statics::NewProp_Camera,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFirst_Character_Statics::NewProp_SpringArm,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFirst_Character_Statics::NewProp_Sprites,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFirst_Character_Statics::NewProp_Fb_Idle,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFirst_Character_Statics::NewProp_Fb_Walk,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFirst_Character_Statics::NewProp_MoveForwardAction,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFirst_Character_Statics::NewProp_MoveRightAction,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFirst_Character_Statics::NewProp_LookAction,
@@ -455,10 +379,10 @@ AFirst_Character::~AFirst_Character() {}
 struct Z_CompiledInDeferFile_FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h__Script_Green_Sample_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AFirst_Character, AFirst_Character::StaticClass, TEXT("AFirst_Character"), &Z_Registration_Info_UClass_AFirst_Character, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFirst_Character), 2517061326U) },
+		{ Z_Construct_UClass_AFirst_Character, AFirst_Character::StaticClass, TEXT("AFirst_Character"), &Z_Registration_Info_UClass_AFirst_Character, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFirst_Character), 2638869850U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h__Script_Green_Sample_1450251027(TEXT("/Script/Green_Sample"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h__Script_Green_Sample_2539473342(TEXT("/Script/Green_Sample"),
 	Z_CompiledInDeferFile_FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h__Script_Green_Sample_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Diss_git_Reality_Shift__Green_Sample_Source_Green_Sample_Private_src_First_Character_h__Script_Green_Sample_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

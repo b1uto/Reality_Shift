@@ -4,9 +4,9 @@
 		"Module.Green_Sample.gen.cpp.obj": [
 			"Basic_Game_Mode.gen.cpp.obj",
 			"FirstPlayerController.gen.cpp.obj",
+			"PixelSnapMovement.gen.cpp.obj",
 			"First_Character.gen.cpp.obj",
-			"Green_Sample.init.gen.cpp.obj",
-			"PixelSnapMovement.gen.cpp.obj"
+			"Green_Sample.init.gen.cpp.obj"
 		]
 	}
 }

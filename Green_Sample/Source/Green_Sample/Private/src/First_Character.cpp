@@ -9,8 +9,6 @@
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 #include "Components/InputComponent.h"
-#include "InputAction.h"
-#include "InputMappingContext.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "DrawDebugHelpers.h"
 #include "TimerManager.h"
@@ -24,45 +22,46 @@ AFirst_Character::AFirst_Character()
 
 	//Spring Arm Componennts
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
-	SpringArm->SetupAttachment(GetRootComponent());
+	SpringArm->SetupAttachment(GetCapsuleComponent());
 	SpringArm->TargetArmLength = 400.f;
 	SpringArm->bUsePawnControlRotation = true;
-	SpringArm->bEnableCameraLag = false;
-	SpringArm->bDoCollisionTest = false;
+	SpringArm->bEnableCameraLag = true;
+	SpringArm->bDoCollisionTest = true;
 
 	//Camera Component
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
-	Camera->SetupAttachment(GetCapsuleComponent());
-	Camera->bUsePawnControlRotation = true;
+	Camera->SetupAttachment(SpringArm, USpringArmComponent::SocketName );
+	Camera->bUsePawnControlRotation = false;
 	Camera->SetRelativeLocation(FVector(0.f, 0.f, 64.f));
 	Camera->SetFieldOfView(90.f);
 
 	//Keep Rotation Manual
-	bUseControllerRotationPitch = true;
-	bUseControllerRotationYaw = true;
+	bUseControllerRotationPitch = false;
+	bUseControllerRotationYaw = false;
 	bUseControllerRotationRoll = false;
 
 	//Hide Inherited Mesh
-	GetMesh()->SetHiddenInGame(true);
-	GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	GetMesh()->SetComponentTickEnabled(false);
-	GetMesh()->SetSkeletalMesh(nullptr);
-	GetMesh()->SetAnimInstanceClass(nullptr);
+	//GetMesh()->SetHiddenInGame(true);
+	//GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	//GetMesh()->SetComponentTickEnabled(false);
+	//GetMesh()->SetSkeletalMesh(nullptr);
+	//GetMesh()->SetAnimInstanceClass(nullptr);
 
 
-	//Paper Flipbook Component
-	UCharacterMovementComponent* MoveComp = GetCharacterMovement();
-	MoveComp->bOrientRotationToMovement = true;
-	MoveComp->bConstrainToPlane = false;
-	MoveComp->SetPlaneConstraintEnabled(false);
-	MoveComp->RotationRate = FRotator(0.f, 720.f, 0.f);
+	//Basic Capsule Setup
+	if (UCharacterMovementComponent* MoveComp = GetCharacterMovement()) {
+		
+		MoveComp->bOrientRotationToMovement = true;
+		MoveComp->bConstrainToPlane = false;
+		MoveComp->SetPlaneConstraintEnabled(false);
+		MoveComp->RotationRate = FRotator(0.f, 720.f, 0.f);
 
-	MoveComp->JumpZVelocity = 600.f;
-	MoveComp->AirControl = 0.7f;
-	MoveComp->GravityScale = 1.f;
-	MoveComp->BrakingDecelerationWalking = 2000.f;
-	MoveComp->MaxWalkSpeed = 600.f;
-
+		MoveComp->JumpZVelocity = 600.f;
+		MoveComp->AirControl = 0.7f;
+		MoveComp->GravityScale = 1.f;
+		MoveComp->BrakingDecelerationWalking = 2000.f;
+		MoveComp->MaxWalkSpeed = 600.f;
+	}
 }
 
 void AFirst_Character::BeginPlay()
@@ -78,6 +77,20 @@ void AFirst_Character::BeginPlay()
 			}
 		}
 	}
+}
+
+void AFirst_Character::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	if (GetCharacterMovement()->IsFalling())
+	{
+		CheckForSoftCollision();
+	}
+	else
+	{
+		SetSoftCollision(false);
+	}
+	
 }
 
 void AFirst_Character::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -187,23 +200,24 @@ void AFirst_Character::CheckForSoftCollision()
 {
 	DropValue = 0.0f;
 
-	FHitResult OutHit;
+	if (!GetWorld()) return;
 
+	FHitResult Hit;
 	const FVector Start = GetActorLocation();
 	const FVector End = Start + (FVector::DownVector * SoftCollisionTraceDistance);
 
-	FCollisionObjectQueryParams ObjectParams;
-	ObjectParams.AddObjectTypesToQuery(SoftCollisionObjectType);
+	FCollisionObjectQueryParams ObjParams;
+	ObjParams.AddObjectTypesToQuery(SoftCollisionObjectType);
 
-	if (OutHit.GetActor())
-	{
-		SetSoftCollision(true);
-	}
-}
+	FCollisionQueryParams QueryParams(SCENE_QUERY_STAT(SoftCollisionTrace), /*bTraceComplex=*/false);
+	QueryParams.AddIgnoredActor(this);
 
-void AFirst_Character::DoMove(float Value)
-{
-	
+	const bool bHit = GetWorld()->LineTraceSingleByObjectType(Hit, Start, End, ObjParams, QueryParams);
+
+	// debug:
+	DrawDebugLine(GetWorld(), Start, End, bHit ? FColor::Green : FColor::Red, false, 0.f, 0, 1.f);
+
+	SetSoftCollision(bHit);
 }
 
 void AFirst_Character::DoDrop(float Value)
@@ -258,8 +272,8 @@ void AFirst_Character::DoDashStart()
 	const float Yaw = GetActorRotation().Yaw;
 	const float Dir = (FMath::Cos(FMath::DegreesToRadians(Yaw)) >= 0.f) ? +1.f : -1.f;
 
-	SavedBrakingFriction = Move->BrakingFrictionFactor;
-	Move->BrakingFrictionFactor = 0.f;
+	//SavedBrakingFriction = Move->BrakingFrictionFactor;
+	//Move->BrakingFrictionFactor = 0.f;
 
 	LaunchCharacter(FVector(DashSpeed * Dir, 0.f, 0.f), true, false);
 
@@ -269,9 +283,6 @@ void AFirst_Character::DoDashStart()
 
 void AFirst_Character::DoDashStop()
 {
-	if (UCharacterMovementComponent* Move = GetCharacterMovement()) {
-		Move->BrakingFrictionFactor = DashFrictionAf;
-	}
 	GetWorld()->GetTimerManager().ClearTimer(DashTimerHandle);
 }
 
